@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pembelian</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<style>
+    tr:nth-child(odd) {background-color: #E0E0E0;}
+</style>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Pembelian')"></nav>
+<div class="container">
+    <br>
+    <div class="card m-4 p-4 border-0">
+        <div class="card-body">
+            <h2 style="text-align: center">Daftar Pembelian</h2><br>
+            <a class="btn btn-primary font-weight-bold" style="text-color: #FFFFFF" th:href="@{/pembelian/tambah}">+Tambah Pembelian</a><br><br>
+            <div th:if="*{listPembelian.size() != 0}">
+                <table class="table border-0" style="text-align: center">
+                    <thead>
+                    <tr class="font-weight-bold" style="background-color: #ffb800">
+                        <th>No.</th>
+                        <th>No Invoice</th>
+                        <th>Total Harga</th>
+                        <th>Member</th>
+                        <th>Jumlah Barang</th>
+                        <th>Tanggal Pembelian</th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pembelian : ${listPembelian}">
+                        <td th:text="${pembelian.idPembelian}"></td>
+                        <td th:text="${pembelian.noInvoice}"></td>
+                        <td th:text="'Rp' + ${pembelian.totalPembelian}"></td>
+                        <td th:text="${pembelian.member.namaMember}"></td>
+                        <td th:text="${pembelian.pembelianBarang}"></td>
+                        <td th:text="${pembelian.tanggalPembelian}"></td>
+                        <td>
+                            <a class="btn font-weight-bold" style="background-color: #58CBEF; text-color: #000" th:href="@{/pembelian/} + ${pembelian.idPembelian}">Lihat</a>
+                            <a class="btn font-weight-bold" style="background-color: #FF0000; text-color: #000" th:href="@{/pembelian/hapus/} + ${pembelian.idPembelian}">Hapus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ubah Member</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Pembelian')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 th:text="'Data member dengan kode '" style="display:inline"></h2>
+                <h2 th:text="${updatedMember.namaMember}+ ' '" style="display:inline; color: #ffb800; font-weight: bold"></h2>
+                <h2 th:text="' berhasil diubah.'" style="display:inline"></h2>
+                <br><br>
+                <a class="btn btn-outline-primary" th:href="@{/member}">Kembali</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

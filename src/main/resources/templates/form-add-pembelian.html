@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Pembelian</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Pembelian')"></nav>
+<div class="card m-4 p-4 border-0">
+    <h2 style="text-align: center">Form Tambah Pembelian</h2>
+    <div class="card-body">
+        <div class="justify-content-center">
+            <br>
+            <div class="card m-4 p-4 border-0">
+                <form th:action="@{/pembelian/tambah}" th:object="${pembelian}" method="POST">
+
+                    <input type="hidden" th:field="*{totalPembelian}" th:value="0"/>
+
+                    <input type="hidden" th:field="*{noInvoice}" th:value=="dummyInvoice"/>
+
+                    <input type="hidden" th:field="*{tanggalPembelian}" th:value="2017-06-01T08:30"/>
+
+                    Nama Admin<br>
+                    <input class="form-control" type="text" name="namaAdmin"/>
+                    <br><br>
+
+                    Pembeli<br>
+                    <select name="member" th:value="*{member}">
+                        <option value="">---Pilih member---</option>
+                        <option th:each="member : ${listAllMember}"
+                                th:value="${member.idMember}"
+                                th:text="${member.namaMember}"></option>
+                    </select>
+                    <br><br>
+
+                   Metode Pembayaran <br>
+                    <label>
+                        <input type="radio" name="isCash" th:field="*{isCash}" th:value="1">Tunai
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="isCash" th:field="*{isCash}" th:value="0">Cicil
+                    </label>
+                    <br><br>
+
+                    <h2 style="text-align: left">Daftar Barang</h2>
+
+                    <table class="table" style="border: none;">
+                        <thead>
+                        <tr>
+                            <th>Nama Barang</th>
+<!--                            <th>-->
+<!--                                <button type="submit" name="addRow" class="btn btn-primary">Tambah Barang</button>-->
+<!--                            </th>-->
+                        </tr>
+                        </thead>
+                        <br>
+                        <tbody>
+<!--                        <tr th:each="pembelianBarangBaru, iterationStatus : ${pembelian.pembelianBarang}">-->
+<!--                            <td class="col-lg-3">-->
+<!--                                <select name="id_barang" th:field="*{pembelianBarang[__${iterationStatus.index}__].id_barang}" class="form-control">-->
+<!--&lt;!&ndash;                                <select name="idBarang" th:value="*{newPembelianBarang.barang}">&ndash;&gt;-->
+<!--                                    <option value="">&#45;&#45;Pilih barang&#45;&#45;</option>-->
+<!--                                    <option th:each="barang : ${listAllBarang}"-->
+<!--                                            th:value="${barang.idBarang}"-->
+<!--                                            th:text="${barang.namaBarang}"></option>-->
+<!--                                </select>-->
+<!--                                <br>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                Qty<br>-->
+<!--                                <input class="form-control" type="text" name="totalPembelian" th:value="${barang.hargaBarang}*"/>-->
+<!--                                <br><br>-->
+<!--                            </td>-->
+<!--                            <td><button type="submit" name="removeRow" th:value="${iterationStatus.index}" class="btn btn-danger">Hapus</button></td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <a class="btn btn-outline-primary" th:href="@{/barang}">Batal</a>
+                    <button class="btn btn-primary" name="save" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

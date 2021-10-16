@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Barang</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<style>
+    td {
+        padding: 0.7em;
+    }
+</style>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Barang')"></nav>
+<div class="container">
+    <div class="card m-4 p-4 border-0">
+        <table>
+            <tr class="font-weight-bold" style="background-color: #ffb800">
+                <td colspan="2"><h2 style="text-align: center">Detail Barang</h2></td>
+            </tr>
+            <tr>
+                <td>Nama Barang</td>
+                <td th:text="': ' + ${barang.namaBarang}"></td>
+            </tr>
+            <tr>
+                <td>Kode Barang</td>
+                <td th:text="': ' + ${barang.kodeBarang}"></td>
+            </tr>
+            <tr>
+                <td>Merk Barang</td>
+                <td th:text="': ' + ${barang.merkBarang}"></td>
+            </tr>
+            <tr>
+                <td>Stok Barang</td>
+                <td th:text="': ' + ${barang.stok}"></td>
+            </tr>
+            <tr>
+                <td>Garansi Toko</td>
+                <td th:text="': ' + ${barang.jumlahGaransi}"></td>
+            </tr>
+            <tr>
+                <td>Deskripsi</td>
+                <td th:text="': ' + ${barang.deskripsiBarang}"><br></td>
+            </tr>
+            <tr>
+                <td>Tipe Barang</td>
+                <td th:text="': ' + ${barang.tipe.namaTipe}"></td>
+            </tr>
+            <tr>
+                <td>Harga</td>
+                <td th:text="': ' + ${barang.hargaBarang}"></td>
+            </tr>
+        </table>
+        <hr>
+        <div>
+            <a class="btn btn-outline-primary" th:href="@{/barang}">Kembali</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

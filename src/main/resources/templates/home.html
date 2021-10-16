@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Beranda</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+<div class="card m-4 p-4 border-0">
+    <div class="d-flex justify-content-center">
+        <div class="m-4 text-align: center">
+            <div class="card border-0" style="background-color: #ffb800; text-align: center; margin: 0; text-align: center">
+                <div class="card-body text-center">
+                    <card class="border-0 font-weight-bold align-content-center margin: 20px" style="color: #FFFFFF; width: 100%">WELCOME TO SIELEKTHOR</card>
+                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <h7 class="font-weight-bold" style="color: #ffb800; text-align: center">List of Features:</h7>
+            </div>
+            <br>
+            <table class=buttons>
+                <div style="width: 100%; display: flex; justify-content: space-around;">
+                    <td><a th:href="@{/barang}" class="border-0 mx-2 btn btn outline-warning font-weight-bold" style="background-color: #ffb800;text-color: #FFFFFF">Barang</a></td>
+                    <td><a th:href="@{/pembelian}" class="border-0 mx-2 btn btn outline-warning font-weight-bold" style="background-color: #ffb800;text-color: #FFFFFF">Pembelian</a></td>
+                    <td><a th:href="@{/}" class="border-0 mx-2 btn btn outline-warning font-weight-bold" style="background-color: #ffb800;text-color: #FFFFFF">Filter Pembelian</a></td>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

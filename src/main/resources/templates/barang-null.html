@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Barang tidak ada</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Barang')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 th:text="'Barang tidak ditemukan.'"></h2>
+                <br>
+                <a class="btn btn-outline-primary" th:href="@{/barang}">Kembali</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

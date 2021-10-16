@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cari Barang</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Barang')"></nav>
+<div class="card m-4 p-4 border-0">
+    <h2 style="text-align: center">Cari Barang</h2>
+    <div class="card-body">
+        <div class="justify-content-center">
+            <br>
+            <div class="card m-4 p-4 border-0">
+                <form th:action="@{/barang/cari}" method="GET">
+                    Tipe Barang<br>
+                    <select name="namaTipe" th:value="*{tipe}">
+                        <option value="">Pilih tipe barang</option>
+                        <option th:each="tipeBarang : ${listTipe}"
+                                th:value="${tipeBarang.namaTipe}"
+                                th:text="${tipeBarang.namaTipe}"></option>
+                    </select>
+                    <br><br>
+
+                    Stok<br>
+                    <label>
+                        <input type="radio" name="stok" th:value="1">Available
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="stok" th:value="0">Sold Out
+                    </label>
+                    <br><br>
+
+
+                    <a class="btn btn-outline-primary" th:href="@{/barang}">Batal</a>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+                <table class="table border-0" style="text-align: center">
+                    <thead>
+                    <tr class="font-weight-bold" style="background-color: #ffb800">
+                        <th>No.</th>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Tipe</th>
+                        <th>Stok</th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="barang : ${listBarangStokTipe}">
+                        <td th:text="${barang.idBarang}"></td>
+                        <td th:text="${barang.namaBarang}"></td>
+                        <td th:text="'Rp' + ${barang.hargaBarang}"></td>
+                        <td th:text="${barang.tipe.namaTipe}"></td>
+                        <td th:text="${barang.stok}"></td>
+                        <td>
+                            <a class="btn font-weight-bold" style="background-color: #58CBEF; text-color: #000" th:href="@{/barang/} + ${barang.idBarang}">Lihat</a>
+                            <a class="btn font-weight-bold" style="background-color: #ffb800; text-color: #000" th:href="@{/barang/ubah/} + ${barang.idBarang}">Ubah</a>
+                            <a class="btn font-weight-bold" style="background-color: #FF0000; text-color: #000" th:href="@{/barang/hapus/} + ${barang.idBarang}">Hapus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

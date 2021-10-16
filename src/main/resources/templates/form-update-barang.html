@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ubah Barang</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Barang')"></nav>
+<div class="card m-4 p-4 border-0">
+    <h2 style="text-align: center">Form Tambah Barang</h2>
+    <div class="card-body">
+        <div class="justify-content-center">
+            <br>
+            <div class="card m-4 p-4 border-0" style="background-color:#ededed">
+                <form th:action="@{/barang/ubah/} + ${barang.idBarang}" th:object="${barang}" method="POST">
+
+                    <input type="hidden" th:field="*{idBarang}" />
+
+                    Nama Barang<br>
+                    <input class="form-control" type="text" name="namaBarang" th:value="*{namaBarang}"/>
+                    <br><br>
+
+                    Kode Barang<br>
+                    <input readonly class="form-control" type="text" name="kodeBarang" th:value="*{kodeBarang}"/>
+                    <br><br>
+
+                    Merk Barang<br>
+                    <input readonly class="form-control" type="text" name="merkBarang" th:value="*{merkBarang}"/>
+                    <br><br>
+
+                    Stok Barang<br>
+                    <input required class="form-control" type="text" name="stok" th:value="*{stok}"/>
+                    <br><br>
+
+                    Garansi Toko<br>
+                    <input required class="form-control" type="text" name="jumlahGaransi" th:value="*{jumlahGaransi}"/>
+                    <br><br>
+
+                    Deskripsi<br>
+                    <input required class="form-control" type="text" name="deskripsiBarang" th:value="*{deskripsiBarang}"/>
+                    <br><br>
+
+                    Tipe Barang<br>
+                    <select name="tipe" th:field="*{tipe}" disabled="disabled">
+                        <option th:value="${barang.tipe.idTipe}"
+                                th:text="${barang.tipe.namaTipe}"></option>
+                    </select><br><br>
+
+                    <input type="hidden" th:field="*{tipe}" />
+
+                    Harga<br>
+                    <input required class="form-control" type="text" name="hargaBarang" th:value="*{hargaBarang}"/>
+                    <br><br>
+
+                    <a class="btn btn-outline-primary" th:href="@{/barang}">Batal</a>
+                    <button class="btn btn-primary" name="save" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
