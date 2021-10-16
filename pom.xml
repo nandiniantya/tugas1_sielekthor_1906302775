@@ -8,11 +8,11 @@
 		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>apap.tutorial</groupId>
-	<artifactId>pergipergi</artifactId>
+	<groupId>apap.tugas</groupId>
+	<artifactId>sielekthor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>pergipergi</name>
-	<description>Project PergiPergi APAP 2021</description>
+	<name>sielekthor</name>
+	<description>Project SiElekthor APAP 2021</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
